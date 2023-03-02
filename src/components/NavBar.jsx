@@ -1,4 +1,7 @@
 import React from "react";
+import movieflix2 from "../images/movieflix2.png";
+import { Link } from "react-router-dom";
+import Register from "./Register";
 
 const NavBar = () => {
   return (
@@ -8,24 +11,35 @@ const NavBar = () => {
           href="/"
           className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
         >
-          <svg
+          {/* <svg
             className="bi me-2"
             width="40"
             height="32"
             role="img"
             aria-label="Bootstrap"
-          ></svg>
+          ></svg> */}
+          <img src={movieflix2} id="logo" />
         </a>
 
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <a href="#" className="nav-link px-2 link-secondary">
+            <Link to="/" className="nav-link px-2 link-secondary">
               Home
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link to="/register" className="nav-link px-2 link-dark">
+              Register
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="nav-link px-2 link-dark">
+              Login
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link px-2 link-dark">
-              Features
+              Movies
             </a>
           </li>
           <li>
