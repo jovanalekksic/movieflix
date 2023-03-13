@@ -38,9 +38,9 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <Link to="/movies" className="nav-link px-2 link-dark">
               Movies
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link px-2 link-dark">
@@ -60,10 +60,10 @@ const NavBar = () => {
         </ul>
 
         <div className="col-md-3 text-end">
-          <button type="button" className="btn btn-outline-primary me-2">
+          <button type="button" className="btn btn-outline-danger me-2">
             Login
           </button>
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-danger">
             Sign-up
           </button>
         </div>
