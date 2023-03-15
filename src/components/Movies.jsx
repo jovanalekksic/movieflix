@@ -18,7 +18,7 @@ const Movies = () => {
     //   <h3>These are all movies from the database.</h3>
     //   {movies==null ? (<></>):(movies.map((movie)=><OneMovie movie={movie} key={movie.id} />))}
     // </div>
-    <div>
+    <div className="allMovies">
       <OneMovie />
       <OneMovie />
       <OneMovie />
