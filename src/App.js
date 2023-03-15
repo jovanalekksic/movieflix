@@ -9,6 +9,7 @@ import HomeBody from './components/HomeBody';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Movies from './components/Movies';
 
+
 function App() {
   return (
     <BrowserRouter>

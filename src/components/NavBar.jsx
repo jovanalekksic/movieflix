@@ -44,7 +44,7 @@ const NavBar = () => {
           </li>
           <li>
             <a href="#" className="nav-link px-2 link-dark">
-              Pricing
+              Your movies
             </a>
           </li>
           <li>
