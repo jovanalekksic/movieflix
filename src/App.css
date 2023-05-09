@@ -95,6 +95,12 @@ max-width:100%;
   font-size: 23px;
   font-weight: bold;
 }
+#buttonLogin{
+  background-color: #00081D;
+}
+#buttonSignup{
+  background-color: #e50914 ;
+}
 
 #prvaLinija{
   background-color: black;
@@ -132,7 +138,7 @@ max-width:100%;
   align-items:center;
   margin-left:70px;
   margin-right:70px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   
 }
 .oneMovie{

@@ -8,6 +8,8 @@ import HomeBody from './components/HomeBody';
 
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Movies from './components/Movies';
+import Favorites from './components/Favorites';
+import Table from './components/Table';
 
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
         <Route path='/register' element={<Register/>}  />
         <Route path='/login' element={<Login/>}  />
         <Route path='/movies' element={<Movies/>} />
+        <Route path='/favorites' element={<Favorites/>} />
+        <Route path='/table' element={<Table/>} />
+        
       </Routes>
       
       <Footer/>
