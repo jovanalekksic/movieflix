@@ -14,7 +14,7 @@ max-width:100%;
   background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-attachment: fixed; 
-  height: 780px;
+  height: 830px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,23 +134,148 @@ max-width:100%;
 }
 .allMovies{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items:center;
   margin-left:70px;
   margin-right:70px;
-  justify-content: space-evenly;
-  
+  justify-content: flex-start;
+  align-content: space-between;
+  gap: 100px 7px;
 }
 .oneMovie{
   display: flex;
   flex-direction: row;
 }
+#moviePicture{
+  width: 18rem;
+  height: 11rem;
+}
+#moviesTrending{
+  font-size: 2 rem;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-left:70px;
+  padding-bottom: 15px;
+  color: white;
+  font-weight: bold;
+}
+.loginReg{
+  background-image: linear-gradient(0deg,transparent 50%,rgba(0,0,0,.7)),radial-gradient(50% 100%,transparent 0,rgba(0,0,0,.7) 100%),url("images/homeBackground.png");
+  background-size: 100% 100%; 
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  height: 830px;
+
+}
+#forms{
+  border-radius: 1rem;
+  opacity: 0.8;
+  background-color: black;
+}
 .cardMovie{
   box-shadow: 0px 0px 15px -5px;
   transition: 0.3s;
   animation: ease-in;
+ 
 }
 .cardMovie:hover{
   transform: scale(1.02);
   box-shadow: 0px 0px 15px 0px;
 }
+
+.card-title{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  top: -30px;
+}
+#heartIcon{
+  position: relative;
+  left: 250px;
+  top: -35px;
+}
+.movies-wrap{
+  padding-bottom: 70px;
+}
+
+.posterDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  position: relative;
+  left: 5%;
+  inline-size: 50%;
+  color: white;
+  margin-top: 43%;
+}
+
+.posterImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  
+ }
+ .poster{
+  /* background-size: cover; */
+  background-size: 100% 100%; 
+  background-repeat: no-repeat;
+  /* background-attachment:scroll;  */
+  background-image: linear-gradient(0deg,transparent 50%,rgba(0,0,0,.7)),radial-gradient(50% 100%,transparent 0,rgba(0,0,0,.7) 100%);
+  
+  height: 830px;
+  
+  background-attachment: fixed; 
+  
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+
+ }
+ /*
+.posterTitle{
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 30px;
+  font-weight:bold;
+  position: relative;
+  top: -280px;
+  left: 10%;
+}
+.posterGenre{
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 25px;
+  font-weight:lighter;
+  position: relative;
+  top: -270px;
+  left: 10%;
+}
+.posterDesc{
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  font-weight:lighter;
+  position: relative;
+  top: -260px;
+  left: 10%;
+  inline-size: 400px;
+}
+.posterProduction{
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  font-weight:lighter;
+  position: relative;
+  top: -250px;
+  left: 10%;
+  
+} */
+/* #play{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+} */

@@ -10,17 +10,41 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Movies from './components/Movies';
 import Favorites from './components/Favorites';
 import Table from './components/Table';
+import { useEffect, useState } from 'react';
+import MovieDetails from './components/MovieDetails';
+import axios from 'axios';
 
 
 function App() {
+
+  const [token,setToken]=useState();
+  function addToken(auth_token){
+    setToken(auth_token);
+  }
+
+  const [movies, setMovies] = useState();
+  useEffect(() => {
+    if (movies == null) {
+      axios.get("api/movies").then((res) => {
+        console.log(res.data);
+        setMovies(res.data.movies);
+      });
+    }
+  }, [movies]);
+
   return (
     <BrowserRouter>
-      <NavBar/>
+      <NavBar element={<NavBar token={token} />}/>
+
       <Routes>
         <Route path='/' element={<HomeBody/>}  />
+        {/* <Route path='/' element={<NavBar token={token} />}/> */}
         <Route path='/register' element={<Register/>}  />
-        <Route path='/login' element={<Login/>}  />
-        <Route path='/movies' element={<Movies/>} />
+        <Route path='/login' element={<Login addToken={addToken} />}  />
+        <Route path='/movies' element={<Movies movies={movies}/>} />
+          <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
+        
+        
         <Route path='/favorites' element={<Favorites/>} />
         <Route path='/table' element={<Table/>} />
         

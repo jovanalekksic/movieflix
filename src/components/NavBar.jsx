@@ -1,9 +1,30 @@
 import React from "react";
 import movieflix2 from "../images/movieflix2.png";
-import { Link } from "react-router-dom";
+import { Routes, Link } from "react-router-dom";
 import Register from "./Register";
+import axios from "axios";
 
-const NavBar = () => {
+const NavBar = ({ token }) => {
+  function handleLogout() {
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "api/logout",
+      headers: {
+        Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
+      },
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        window.sessionStorage.setItem("auth_token", null);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <div className="container" id="navbar">
       <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -27,7 +48,7 @@ const NavBar = () => {
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/register" className="nav-link px-2 link-dark">
               Register
             </Link>
@@ -36,21 +57,21 @@ const NavBar = () => {
             <Link to="/login" className="nav-link px-2 link-dark">
               Login
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/movies" className="nav-link px-2 link-dark">
               Movies
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <Link to="/favorites" className="nav-link px-2 link-dark">
               Your movies
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
-              FAQs
-            </a>
+            <Link to="/table" className="nav-link px-2 link-dark">
+              Table
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link px-2 link-dark">
@@ -60,10 +81,32 @@ const NavBar = () => {
         </ul>
 
         <div className="col-md-3 text-end">
-          <button type="button" className="btn btn-outline-danger me-2">
-            Login
-          </button>
-          <button type="button" className="btn btn-danger">
+          {token == null ? (
+            <button
+              type="button"
+              className="btn btn-danger me-2"
+              id="buttonLogin"
+              onClick={(event) => (window.location.href = "/login")}
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-danger me-2"
+              id="buttonLogin"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
+
+          <button
+            type="button"
+            className="btn btn-danger"
+            id="buttonSignup"
+            onClick={(event) => (window.location.href = "/register")}
+          >
             Sign-up
           </button>
         </div>
