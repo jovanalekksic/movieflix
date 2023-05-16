@@ -13,6 +13,7 @@ import Table from './components/Table';
 import { useEffect, useState } from 'react';
 import MovieDetails from './components/MovieDetails';
 import axios from 'axios';
+import TVShows from './components/TVShows';
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
     }
   }, [movies]);
 
+  
+
   return (
     <BrowserRouter>
       <NavBar element={<NavBar token={token} />}/>
@@ -42,9 +45,8 @@ function App() {
         <Route path='/register' element={<Register/>}  />
         <Route path='/login' element={<Login addToken={addToken} />}  />
         <Route path='/movies' element={<Movies movies={movies}/>} />
-          <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
-        
-        
+        <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
+        <Route path='/tvshows' element={<TVShows/>} />
         <Route path='/favorites' element={<Favorites/>} />
         <Route path='/table' element={<Table/>} />
         

@@ -27,54 +27,50 @@ const NavBar = ({ token }) => {
   }
   return (
     <div className="container" id="navbar">
-      <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a
-          href="/"
+      <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
+        <Link
+          to="/"
           className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
         >
-          {/* <svg
-            className="bi me-2"
-            width="40"
-            height="32"
-            role="img"
-            aria-label="Bootstrap"
-          ></svg> */}
           <img src={movieflix2} id="logo" />
-        </a>
+        </Link>
 
-        <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <ul
+          className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0  "
+          id="tabs"
+        >
           <li>
-            <Link to="/" className="nav-link px-2 link-secondary">
+            <Link to="/" className="nav-link  px-2 ">
               Home
             </Link>
           </li>
-          {/* <li>
-            <Link to="/register" className="nav-link px-2 link-dark">
-              Register
+          <li>
+            <Link to="/TVShows" className="nav-link  px-2 ">
+              TV Shows
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/login" className="nav-link px-2 link-dark">
               Login
             </Link>
           </li> */}
           <li>
-            <Link to="/movies" className="nav-link px-2 link-dark">
+            <Link to="/movies" className="nav-link  px-2 ">
               Movies
             </Link>
           </li>
           <li>
-            <Link to="/favorites" className="nav-link px-2 link-dark">
+            <Link to="/favorites" className="nav-link  px-2 ">
               Your movies
             </Link>
           </li>
           <li>
-            <Link to="/table" className="nav-link px-2 link-dark">
+            <Link to="/table" className="nav-link  px-2 ">
               Table
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <a href="#" className="nav-link   px-2 ">
               About
             </a>
           </li>

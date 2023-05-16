@@ -14,7 +14,7 @@ const MovieDetails = ({ movies }) => {
         backgroundImage: `linear-gradient(0deg,transparent 50%,rgba(0,0,0,.7)),radial-gradient(50% 100%,transparent 0,rgba(0,0,0,.7) 100%),url(${m.picture})`,
       }}
     >
-      {/* <img src={playButton} id="play" /> */}
+      <img src={playButton} id="play" />
       {/* <div
         className="bigImage"
       >
