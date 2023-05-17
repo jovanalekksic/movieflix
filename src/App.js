@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import MovieDetails from './components/MovieDetails';
 import axios from 'axios';
 import TVShows from './components/TVShows';
+import Pricing from './components/Pricing';
 
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
         <Route path='/tvshows' element={<TVShows/>} />
         <Route path='/favorites' element={<Favorites/>} />
         <Route path='/table' element={<Table/>} />
-        
+        <Route path='/pricing' element={<Pricing/>} />
       </Routes>
       
       <Footer/>

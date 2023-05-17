@@ -70,6 +70,11 @@ const NavBar = ({ token }) => {
             </Link>
           </li>
           <li>
+            <Link to="/pricing" className="nav-link  px-2 ">
+              Pricing
+            </Link>
+          </li>
+          <li>
             <a href="#" className="nav-link   px-2 ">
               About
             </a>
