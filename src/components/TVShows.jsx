@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import OneShow from "./OneShow";
 
 const TVShows = () => {
   const [show, setShow] = useState([]);
@@ -8,7 +9,7 @@ const TVShows = () => {
   const options = {
     method: "GET",
     url: "https://online-movie-database.p.rapidapi.com/auto-complete",
-    params: { q: "harry potter" },
+    params: { q: "last of us" },
     headers: {
       "X-RapidAPI-Key": "3a6e5ebd10mshf45c280bc1b99bep1f4f17jsnfb6dfd8cec22",
       "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
@@ -30,17 +31,13 @@ const TVShows = () => {
   console.log(show);
   // console.log(show.d);
   return (
-    <div className="tvshows">
-      <h1>TV Shows</h1>
-      {show.map((item, index) => {
-        // console.log(item.i.imageUrl);
-        return (
-          <div key={index}>
-            <h1>{item.l}</h1>
-            <img src={item.i.imageUrl} alt="" className="showPicture" />
-          </div>
-        );
-      })}
+    <div className="movies-wrap">
+      <h2 id="moviesTrending">Trending now</h2>
+      <div className="allMovies">
+        {show.map((item, index) => (
+          <OneShow show={item} key={index} />
+        ))}
+      </div>
       {/* {show.map(({ l, s, y, i: { height, imageUrl } }, index) => {
         return (
           <div key={index}>
