@@ -3,33 +3,63 @@ import "../Pricing.css";
 import Currency from "./Currency";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "../Currency.css";
 
 const Pricing = () => {
-  //   const [amount1, setAmount1] = useState(1);
-  //   const [amount2, setAmount2] = useState(1);
-  //   const [currency1, setCurrency1] = useState("USD");
-  //   const [currency2, setCurrency2] = useState("USD");
-  //   const [rates, setRates] = useState([]);
+  const [currencyOptions, setCurrencyOptions] = useState([]);
+  //   console.log(currencyOptions);
+  const [fromCurrency, setFromCurrency] = useState();
+  const [toCurrency, setToCurrency] = useState();
+  const [exchangeRate, setExchangeRate] = useState();
+  const [amount, setAmount] = useState(1);
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-  //   var myHeaders = new Headers();
-  //   myHeaders.append("apikey", "VtUgF2QPAcPBcllaPlrCWvLLqr3C5yaI");
+  let toAmount, fromAmount;
+  if (amountInFromCurrency) {
+    fromAmount = amount;
+    toAmount = amount * exchangeRate;
+  } else {
+    toAmount = amount;
+    fromAmount = amount / exchangeRate;
+  }
 
-  //   var requestOptions = {
-  //     method: "GET",
-  //     redirect: "follow",
-  //     headers: myHeaders,
-  //   };
-  //   useEffect(() => {
-  //     axios
-  //       .get(
-  //         "http://api.apilayer.com/fixer/latest?symbols=symbols&base=eur",
-  //         requestOptions
-  //       )
-  //       .then((response) => {
-  //         setRates(response.data.rates);
-  //       });
-  //     console.log(rates);
-  //   }, []);
+  // console.log(exchangeRate);
+
+  var requestURL = "https://api.exchangerate.host/latest";
+  var request = new XMLHttpRequest();
+  request.open("GET", requestURL);
+  request.responseType = "json";
+  request.send();
+
+  useEffect(() => {
+    request.onload = function () {
+      var response = request.response;
+      //   console.log(response);
+      const firstCurrency = Object.keys(response.rates)[0];
+      // console.log(firstCurrency);
+      setCurrencyOptions([response.base, ...Object.keys(response.rates)]);
+      setFromCurrency(response.base);
+      setToCurrency(firstCurrency);
+      setExchangeRate(response.rates[firstCurrency]);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (fromCurrency != null && toCurrency != null) {
+      fetch(`${requestURL}?base=${fromCurrency}&symbols=${toCurrency}`)
+        .then((res) => res.json())
+        .then((data) => setExchangeRate(data.rates[toCurrency]));
+    }
+  }, [fromCurrency, toCurrency]);
+
+  function handleFromAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(true);
+  }
+  function handleToAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(false);
+  }
 
   return (
     <div className="pricing">
@@ -241,16 +271,24 @@ const Pricing = () => {
         </div>
       </div>
 
-      {/* <Currency
-        currencies={Object.keys(rates)}
-        amount={amount1}
-        currency={currency1}
-      />
-      <Currency
-        currencies={Object.keys(rates)}
-        amount={amount2}
-        currency={currency2}
-      /> */}
+      <div className="main">
+        <h1>Convert</h1>
+        <Currency
+          currencyOptions={currencyOptions}
+          selectedCurrency={fromCurrency}
+          onChangeCurrency={(e) => setFromCurrency(e.target.value)}
+          onChangeAmount={handleFromAmountChange}
+          amount={fromAmount}
+        />
+        <div className="equals">=</div>
+        <Currency
+          currencyOptions={currencyOptions}
+          selectedCurrency={toCurrency}
+          onChangeCurrency={(e) => setToCurrency(e.target.value)}
+          onChangeAmount={handleToAmountChange}
+          amount={toAmount}
+        />
+      </div>
     </div>
   );
 };
