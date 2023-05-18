@@ -241,8 +241,6 @@ const Pricing = () => {
         </div>
       </div>
 
-      <Currency />
-
       {/* <Currency
         currencies={Object.keys(rates)}
         amount={amount1}

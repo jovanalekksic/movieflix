@@ -75,6 +75,11 @@ const NavBar = ({ token }) => {
             </Link>
           </li>
           <li>
+            <Link to="/converter" className="nav-link  px-2 ">
+              Converter
+            </Link>
+          </li>
+          <li>
             <a href="#" className="nav-link   px-2 ">
               About
             </a>
