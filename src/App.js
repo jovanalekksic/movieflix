@@ -16,6 +16,7 @@ import axios from 'axios';
 import TVShows from './components/TVShows';
 import Pricing from './components/Pricing';
 import Converter from './components/Converter';
+import About from './components/About';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path='/tvshows' element={<TVShows/>} />
         <Route path='/favorites' element={<Favorites/>} />
         <Route path='/table' element={<Table/>} />
+        <Route path='/about' element={<About/>} />
         <Route path='/pricing' element={<Pricing/>} />
         <Route path='/converter' element={<Converter/>} />
       </Routes>
