@@ -1,8 +1,36 @@
 import React from "react";
 import "../Pricing.css";
 import Currency from "./Currency";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Pricing = () => {
+  //   const [amount1, setAmount1] = useState(1);
+  //   const [amount2, setAmount2] = useState(1);
+  //   const [currency1, setCurrency1] = useState("USD");
+  //   const [currency2, setCurrency2] = useState("USD");
+  //   const [rates, setRates] = useState([]);
+
+  //   var myHeaders = new Headers();
+  //   myHeaders.append("apikey", "VtUgF2QPAcPBcllaPlrCWvLLqr3C5yaI");
+
+  //   var requestOptions = {
+  //     method: "GET",
+  //     redirect: "follow",
+  //     headers: myHeaders,
+  //   };
+  //   useEffect(() => {
+  //     axios
+  //       .get(
+  //         "http://api.apilayer.com/fixer/latest?symbols=symbols&base=eur",
+  //         requestOptions
+  //       )
+  //       .then((response) => {
+  //         setRates(response.data.rates);
+  //       });
+  //     console.log(rates);
+  //   }, []);
+
   return (
     <div className="pricing">
       <div className="container p-5">
@@ -214,7 +242,17 @@ const Pricing = () => {
       </div>
 
       <Currency />
-      <Currency />
+
+      {/* <Currency
+        currencies={Object.keys(rates)}
+        amount={amount1}
+        currency={currency1}
+      />
+      <Currency
+        currencies={Object.keys(rates)}
+        amount={amount2}
+        currency={currency2}
+      /> */}
     </div>
   );
 };
