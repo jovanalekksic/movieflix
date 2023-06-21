@@ -18,7 +18,12 @@ const OneMovie = ({ movie }) => {
       style={{ width: 18 + "rem", height: 11 + "rem" }}
     >
       <Link to={`/detail/${movie.id}`}>
-        <img src={movie.picture} className="card-img-top" id="moviePicture" />
+        <img
+          src={movie.picture}
+          className="card-img-top"
+          id="moviePicture"
+          loading="lazy"
+        />
       </Link>
 
       <div className="card-body-movie">
