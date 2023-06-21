@@ -66,7 +66,7 @@ const Pricing = () => {
       <div className="container p-5">
         <div className="row">
           <div className="col-lg-4 col-md-12 mb-4">
-            <div className="card h-100 shadow-lg">
+            <div className="card h-100 shadow-lg" id="kartice">
               <div className="card-body">
                 <div className="text-center p-3">
                   <h5 className="card-title-pricing">Basic</h5>
@@ -133,7 +133,7 @@ const Pricing = () => {
             </div>
           </div>
           <div className="col-lg-4 col-md-12 mb-4">
-            <div className="card h-100 shadow-lg">
+            <div className="card h-100 shadow-lg" id="kartice">
               <div className="card-body">
                 <div className="text-center p-3">
                   <h5 className="card-title-pricing">Standard</h5>
@@ -201,7 +201,7 @@ const Pricing = () => {
             </div>
           </div>
           <div className="col-lg-4 col-md-12 mb-4">
-            <div className="card h-100 shadow-lg">
+            <div className="card h-100 shadow-lg" id="kartice">
               <div className="card-body">
                 <div className="text-center p-3">
                   <h5 className="card-title-pricing">Premium</h5>
