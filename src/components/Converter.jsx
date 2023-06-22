@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Currency from "./Currency";
 import "../Currency.css";
+import { Outlet } from "react-router-dom";
 
 const Converter = () => {
   const [currencyOptions, setCurrencyOptions] = useState([]);
@@ -78,6 +79,7 @@ const Converter = () => {
           amount={toAmount}
         />
       </div>
+      <Outlet />
     </div>
   );
 };

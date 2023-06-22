@@ -22,6 +22,7 @@ import About from './components/About';
 function App() {
 
   const [token,setToken]=useState();
+
   function addToken(auth_token){
     setToken(auth_token);
   }
@@ -36,25 +37,29 @@ function App() {
     }
   }, [movies]);
 
-  
+
 
   return (
     <BrowserRouter>
-      <NavBar element={<NavBar token={token} />}/>
+      {/* <NavBar element={<NavBar token={token} />}/> */}
 
       <Routes>
-        <Route path='/' element={<HomeBody/>}  />
-        {/* <Route path='/' element={<NavBar token={token} />}/> */}
-        <Route path='/register' element={<Register/>}  />
-        <Route path='/login' element={<Login addToken={addToken} />}  />
-        <Route path='/movies' element={<Movies movies={movies}/>} />
-        <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
-        <Route path='/tvshows' element={<TVShows/>} />
-        <Route path='/favorites' element={<Favorites/>} />
-        <Route path='/table' element={<Table/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/pricing' element={<Pricing/>} />
-        <Route path='/converter' element={<Converter/>} />
+
+        <Route path='/' element={<NavBar token={token} />} >
+          <Route path='home' element={<HomeBody/>}  />
+          <Route path='/register' element={<Register/>}  />
+          <Route path='/login' element={<Login addToken={addToken} />}  />
+          <Route path='/movies' element={<Movies movies={movies}/>} />
+          <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
+          <Route path='/tvshows' element={<TVShows/>} />
+          <Route path='/favorites' element={<Favorites/>} />
+          <Route path='/table' element={<Table token={token}/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/pricing' element={<Pricing/>} />
+          <Route path='/converter' element={<Converter/>} />
+          
+        </Route>
+
       </Routes>
       
       <Footer/>

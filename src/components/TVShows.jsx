@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import OneShow from "./OneShow";
+import { Outlet } from "react-router-dom";
 
 const TVShows = () => {
   const [show, setShow] = useState([]);
@@ -31,14 +32,15 @@ const TVShows = () => {
   console.log(show);
   // console.log(show.d);
   return (
-    <div className="movies-wrap">
-      <h2 id="moviesTrending">Trending now</h2>
-      <div className="allMovies">
-        {show.map((item, index) => (
-          <OneShow show={item} key={index} />
-        ))}
-      </div>
-      {/* {show.map(({ l, s, y, i: { height, imageUrl } }, index) => {
+    <div>
+      <div className="movies-wrap">
+        <h2 id="moviesTrending">Trending now</h2>
+        <div className="allMovies">
+          {show.map((item, index) => (
+            <OneShow show={item} key={index} />
+          ))}
+        </div>
+        {/* {show.map(({ l, s, y, i: { height, imageUrl } }, index) => {
         return (
           <div key={index}>
             <h2>{l}</h2>
@@ -49,6 +51,8 @@ const TVShows = () => {
           </div>
         );
       })} */}
+      </div>
+      <Outlet />
     </div>
   );
 };
