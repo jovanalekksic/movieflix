@@ -37,6 +37,22 @@ function App() {
     }
   }, [movies]);
 
+  const [admin, setAdmin]=useState();
+  //admin: jovana / jo@gmail.com
+  useEffect(()=>{
+    if(admin==null){
+      axios.get("api/users")
+      .then((res)=>{
+        console.log(res.data[6]);
+        setAdmin(res.data[6].id) //7
+        
+      })
+    }
+  })
+
+
+const [isAuthorized, setIsAuthorized]=useState(false);
+
 
 
   return (
@@ -57,7 +73,7 @@ function App() {
           <Route path='/about' element={<About/>} />
           <Route path='/pricing' element={<Pricing/>} />
           <Route path='/converter' element={<Converter/>} />
-          
+
         </Route>
 
       </Routes>

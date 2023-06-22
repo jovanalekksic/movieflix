@@ -2,6 +2,7 @@ import React from "react";
 import tv from "../images/tv.png";
 import phone from "../images/phone.png";
 import devices from "../images/devices.png";
+import { Link } from "react-router-dom";
 
 const HomeBody = () => {
   return (
@@ -11,7 +12,12 @@ const HomeBody = () => {
           <h1>Unlimited movies, TV shows, and more.</h1>
           <p style={{ fontSize: 32 }}>Plans now start at EUR4.99/month</p>
           <button type="button" className="btn btn-danger" id="buttonJoin">
-            JOIN
+            <Link
+              to="/register"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              JOIN
+            </Link>
           </button>
         </div>
       </div>

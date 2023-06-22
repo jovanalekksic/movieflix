@@ -16,7 +16,7 @@ const Login = ({ addToken }) => {
     // console.log(newUserData);
     setUserData(newUserData);
   }
-
+  let validator = true;
   function handleLogin(e) {
     e.preventDefault();
     axios
@@ -25,12 +25,14 @@ const Login = ({ addToken }) => {
         console.log(res.data);
         if (res.data.success === true) {
           window.sessionStorage.setItem("auth_token", res.data.access_token);
+          validator = true;
           addToken(res.data.access_token);
           navigate("/movies");
         }
       })
       .catch((e) => {
         console.log(e);
+        validator = false;
       });
   }
 
@@ -69,6 +71,13 @@ const Login = ({ addToken }) => {
                           className="form-control form-control-lg"
                           onInput={handleInput}
                         />
+                        {validator == true ? (
+                          <label style={{ color: "red" }}>
+                            Email or Password are not correct
+                          </label>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
 
                       <p className="small mb-5 pb-lg-2">
