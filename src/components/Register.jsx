@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ addToken }) => {
   let navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: "",
@@ -23,6 +23,8 @@ const Register = () => {
       .post("api/register", userData)
       .then((res) => {
         console.log(res.data);
+        window.sessionStorage.setItem("auth_token", res.data.access_token);
+        addToken(res.data.access_token);
         navigate("/movies");
       })
       .catch((e) => {

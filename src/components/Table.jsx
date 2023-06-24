@@ -33,7 +33,7 @@ class Table extends Component {
               pagingType: "full_numbers",
               retrieve: true,
               backgroundColor: "white",
-              pageLength: 20,
+              pageLength: 10,
               processing: true,
               dom: "Bfrtip",
               select: {
@@ -118,7 +118,10 @@ class Table extends Component {
             </div>
           </td>
           <td className="text-xs font-weight-bold">{item.user.id}</td>
-          <td></td>
+          <td>
+            <button className="btn btn-danger">Delete</button> <br /> <br />
+            <button className="btn btn-primary">Update</button>
+          </td>
         </tr>
       ));
     } catch (e) {
@@ -171,12 +174,9 @@ const style = {
   backgroundColor: "white",
   opacity: 0.97,
   textAlign: "center",
-  // borderRadius: "25px",
-  // border: "2px solid grey",
+
   width: 80 + "%",
-  // marginTop: "50px",
-  // marginBottom: "60px",
-  // marginRight: "670px",
+
   marginLeft: 10 + "%",
 };
 

@@ -17,6 +17,7 @@ const Login = ({ addToken }) => {
     setUserData(newUserData);
   }
   let validator = true;
+
   function handleLogin(e) {
     e.preventDefault();
     axios

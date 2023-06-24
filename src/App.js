@@ -39,19 +39,20 @@ function App() {
 
   const [admin, setAdmin]=useState();
   //admin: jovana / jo@gmail.com
-  useEffect(()=>{
-    if(admin==null){
-      axios.get("api/users")
-      .then((res)=>{
-        console.log(res.data[6]);
-        setAdmin(res.data[6].id) //7
+  // useEffect(()=>{
+  //   if(admin==null){
+  //     axios.get("api/users")
+  //     .then((res)=>{
+  //       console.log(res.data[6]);
+  //       setAdmin(res.data[6].id) //7
         
-      })
-    }
-  })
+  //     })
+  //   }
+  // })
 
 
-const [isAuthorized, setIsAuthorized]=useState(false);
+
+const [userId, setIsAuthorized]=useState(false);
 
 
 
@@ -63,12 +64,12 @@ const [isAuthorized, setIsAuthorized]=useState(false);
 
         <Route path='/' element={<NavBar token={token} />} >
           <Route path='home' element={<HomeBody/>}  />
-          <Route path='/register' element={<Register/>}  />
+          <Route path='/register' element={<Register addToken={addToken}/>}  />
           <Route path='/login' element={<Login addToken={addToken} />}  />
           <Route path='/movies' element={<Movies movies={movies}/>} />
           <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
           <Route path='/tvshows' element={<TVShows/>} />
-          <Route path='/favorites' element={<Favorites/>} />
+          <Route path='/favorites' element={<Favorites token={token}/>} />
           <Route path='/table' element={<Table token={token}/>} />
           <Route path='/about' element={<About/>} />
           <Route path='/pricing' element={<Pricing/>} />
