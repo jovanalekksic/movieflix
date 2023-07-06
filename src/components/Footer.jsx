@@ -8,15 +8,14 @@ const Footer = () => {
           <div className="container text-center text-md-start mt-5">
             <div className="row mt-3">
               <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold">Company name</h6>
+                <h6 className="text-uppercase fw-bold">Movieflix</h6>
                 <hr
                   className="mb-4 mt-0 d-inline-block mx-auto"
                   id="trecaLinija"
                 />
                 <p>
-                  Here you can use rows and columns to organize your footer
-                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit.
+                  Stories move us. They make us feel more emotion, see new
+                  perspectives, and bring us closer to each other.
                 </p>
               </div>
 
@@ -28,22 +27,22 @@ const Footer = () => {
                 />
                 <p>
                   <a href="#!" className="text-white">
-                    MDBootstrap
+                    Popular TV Shows
                   </a>
                 </p>
                 <p>
                   <a href="#!" className="text-white">
-                    MDWordPress
+                    Movies
                   </a>
                 </p>
                 <p>
                   <a href="#!" className="text-white">
-                    BrandFlow
+                    Studio
                   </a>
                 </p>
                 <p>
                   <a href="#!" className="text-white">
-                    Bootstrap Angular
+                    Movie Sets
                   </a>
                 </p>
               </div>
@@ -61,12 +60,12 @@ const Footer = () => {
                 </p>
                 <p>
                   <a href="#!" className="text-white">
-                    Become an Affiliate
+                    Careers
                   </a>
                 </p>
                 <p>
                   <a href="#!" className="text-white">
-                    Shipping Rates
+                    Pricing tables
                   </a>
                 </p>
                 <p>
@@ -86,7 +85,7 @@ const Footer = () => {
                   <i className="fas fa-home mr-3"></i> New York, NY 10012, US
                 </p>
                 <p>
-                  <i className="fas fa-envelope mr-3"></i> info@example.com
+                  <i className="fas fa-envelope mr-3"></i> info@movieflix.com
                 </p>
                 <p>
                   <i className="fas fa-phone mr-3"></i> + 01 234 567 88
