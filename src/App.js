@@ -67,7 +67,7 @@ function App() {
           </Route> */}
 
             <Route path='/table' element={<Table  />} />
-            <Route path='/update:id' element={<UpdateTable/>} />
+            <Route path='/update/:id' element={<UpdateTable/>} />
 
         </Route>
 
