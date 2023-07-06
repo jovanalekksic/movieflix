@@ -1,12 +1,13 @@
 import React from "react";
 import movieflix2 from "../images/movieflix2.png";
-import { Routes, Link, useNavigate } from "react-router-dom";
+import { Routes, Link, useNavigate, Navigate } from "react-router-dom";
 import Register from "./Register";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
 
-const NavBar = ({ token }) => {
+const NavBar = ({ token, role }) => {
   let navigate = useNavigate();
+
   function handleLogout() {
     let config = {
       method: "post",
@@ -47,31 +48,43 @@ const NavBar = ({ token }) => {
                 Home
               </Link>
             </li>
-            <li>
-              <Link to="/TVShows" className="nav-link  px-2 ">
-                TV Shows
-              </Link>
-            </li>
-            {/* <li>
-            <Link to="/login" className="nav-link px-2 link-dark">
-              Login
-            </Link>
-          </li> */}
-            <li>
-              <Link to="/movies" className="nav-link  px-2 ">
-                Movies
-              </Link>
-            </li>
-            <li>
-              <Link to="/favorites" className="nav-link  px-2 ">
-                Your movies
-              </Link>
-            </li>
-            <li>
-              <Link to="/table" className="nav-link  px-2 ">
-                Table
-              </Link>
-            </li>
+
+            {token != null ? (
+              <li>
+                <Link to="/TVShows" className="nav-link  px-2 ">
+                  TV Shows
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
+            {token != null ? (
+              <li>
+                <Link to="/movies" className="nav-link  px-2 ">
+                  Movies
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
+            {token != null ? (
+              <li>
+                <Link to="/favorites" className="nav-link  px-2 ">
+                  Your movies
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
+            {token != null && role == "admin" ? (
+              <li>
+                <Link to="/table" className="nav-link  px-2 ">
+                  Table
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
             <li>
               <Link to="/pricing" className="nav-link  px-2 ">
                 Pricing
