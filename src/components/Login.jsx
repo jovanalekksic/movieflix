@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Outlet } from "react-router-dom";
 
-const Login = ({ addToken }) => {
+const Login = ({ addToken, setRole, setMovies }) => {
   let navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
@@ -16,7 +16,6 @@ const Login = ({ addToken }) => {
     // console.log(newUserData);
     setUserData(newUserData);
   }
-  let validator = true;
 
   function handleLogin(e) {
     e.preventDefault();
@@ -26,14 +25,18 @@ const Login = ({ addToken }) => {
         console.log(res.data);
         if (res.data.success === true) {
           window.sessionStorage.setItem("auth_token", res.data.access_token);
-          validator = true;
+          setRole(res.data.role);
           addToken(res.data.access_token);
-          navigate("/movies");
+          //navigate("/movies");
+          if (res.data.role === "admin") {
+            navigate("/table");
+          } else {
+            navigate("/home");
+          }
         }
       })
       .catch((e) => {
         console.log(e);
-        validator = false;
       });
   }
 
@@ -72,13 +75,10 @@ const Login = ({ addToken }) => {
                           className="form-control form-control-lg"
                           onInput={handleInput}
                         />
-                        {validator == true ? (
-                          <label style={{ color: "red" }}>
+
+                        {/* <label style={{ color: "red" }}>
                             Email or Password are not correct
-                          </label>
-                        ) : (
-                          <div></div>
-                        )}
+                          </label> */}
                       </div>
 
                       <p className="small mb-5 pb-lg-2">
