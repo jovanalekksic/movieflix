@@ -4,62 +4,73 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function Update() {
   const { id } = useParams();
+  const [values, setValues] = useState({
+    id: id,
+    title: "",
+    description: "",
+    rating: "",
+    picture: "",
+    genre_id: "",
+    studio_id: "",
+  });
+
   useEffect(() => {
-    axios
-      .get("api/admin/movies/" + id)
-      .then((res) => console.log(res))
+    let config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: "api/admin/movies/" + id,
+      data: values,
+      headers: {
+        Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
+      },
+    };
+    axios(config)
+      .then((res) => {
+        console.log(res.data);
+        setValues({
+          ...values,
+          title: res.data.title,
+          description: res.data.description,
+          rating: res.data.rating,
+          picture: res.data.picture,
+          genre_id: res.data.genre_id,
+          studio_id: res.data.studio_id,
+        });
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  // function Update({ movie }) {
-  //   const [movieData, setMovieData] = useState({
-  //     //id:movie.id,
-  //     title: movie.title,
-  //     description: movie.description,
-  //     rating: movie.rating,
-  //     picture: movie.picture,
-  //     //user_id:movie.user.id,
-  //   });
-  //   function handleInput(e) {
-  //     let newMovieData = movieData;
+  const navigate = useNavigate();
 
-  //     newMovieData[e.target.name] = e.target.value;
-  //     console.log(newMovieData);
-  //     setMovieData(newMovieData);
-  //   }
-  //   let navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  //   function handleUpdate(e) {
-  //     e.preventDefault();
-
-  //     var config = {
-  //       method: "put",
-  //       url: "api/admin/movies/" + movie.id,
-  //       data: movieData,
-  //       headers: {
-  //         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
-  //       },
-  //     };
-
-  //     axios(config)
-  //       .then(function (response) {
-  //         console.log(response);
-
-  //         alert("USPESNO");
-  //         navigate("/table");
-  //       })
-  //       .catch(function (error) {
-  //         if (error.response) {
-  //           console.log(error.response.data);
-  //           console.log(error.response.status);
-  //           console.log(error.response.headers);
-  //         } else if (error.request) {
-  //           console.log(error.request);
-  //         } else {
-  //           console.log("Error", error.message);
-  //         }
-  //       });
-  //   }
+    let config = {
+      method: "put",
+      maxBodyLength: Infinity,
+      url: "api/admin/movies/" + id,
+      data: values,
+      headers: {
+        ContentTyoe: "application/json",
+        Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
+      },
+    };
+    axios(config)
+      .then((res) => {
+        setValues({
+          ...values,
+          title: res.data.title,
+          description: res.data.description,
+          rating: res.data.rating,
+          picture: res.data.picture,
+          genre_id: res.data.genre_id,
+          studio_id: res.data.studio_id,
+        });
+        navigate("/table");
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
@@ -76,14 +87,21 @@ function Update() {
                       </h2>
 
                       <div className="form-outline form-white mb-4">
+                        <label htmlFor="title" class="form-label">
+                          Title
+                        </label>
                         <input
                           placeholder="Title"
                           name="title"
                           className="form-control form-control-lg"
+                          value={values.title}
+                          onChange={(e) =>
+                            setValues({ ...values, title: e.target.value })
+                          }
                         />
                       </div>
 
-                      <div class="mb-3">
+                      <div className="mb-3">
                         <label htmlFor="description" class="form-label">
                           Description
                         </label>
@@ -91,28 +109,78 @@ function Update() {
                           class="form-control"
                           id="description"
                           rows="3"
+                          value={values.description}
+                          onChange={(e) =>
+                            setValues({
+                              ...values,
+                              description: e.target.value,
+                            })
+                          }
                         ></textarea>
                       </div>
 
                       <div className="form-outline form-white mb-4">
+                        <label htmlFor="rating" class="form-label">
+                          Rating
+                        </label>
                         <input
                           placeholder="Rating"
                           name="rating"
                           className="form-control form-control-lg"
+                          value={values.rating}
+                          onChange={(e) =>
+                            setValues({ ...values, rating: e.target.value })
+                          }
                         />
                       </div>
 
                       <div className="form-outline form-white mb-4">
+                        <label htmlFor="Picture url" class="form-label">
+                          Picture url
+                        </label>
                         <input
                           placeholder="Picture URL"
                           name="picture"
                           className="form-control form-control-lg"
+                          value={values.picture}
+                          onChange={(e) =>
+                            setValues({ ...values, picture: e.target.value })
+                          }
+                        />
+                      </div>
+                      <div className="form-outline form-white mb-4">
+                        <label htmlFor="Genre id" class="form-label">
+                          Genre id
+                        </label>
+                        <input
+                          placeholder="Genre id"
+                          name="genre_id"
+                          className="form-control form-control-lg"
+                          value={values.genre_id}
+                          onChange={(e) =>
+                            setValues({ ...values, genre_id: e.target.value })
+                          }
+                        />
+                      </div>
+                      <div className="form-outline form-white mb-4">
+                        <label htmlFor="Studio id" class="form-label">
+                          Studio id
+                        </label>
+                        <input
+                          placeholder="Studio id"
+                          name="studio_id"
+                          className="form-control form-control-lg"
+                          value={values.studio_id}
+                          onChange={(e) =>
+                            setValues({ ...values, studio_id: e.target.value })
+                          }
                         />
                       </div>
 
                       <button
                         className="btn btn-outline-light btn-lg px-5"
                         type="submit"
+                        onClick={handleSubmit}
                       >
                         Update
                       </button>
@@ -126,36 +194,6 @@ function Update() {
       </div>
       <Outlet />
     </div>
-
-    // <>
-    //   <header>
-    //     <h1>Update Movie</h1>
-    //   </header>
-    //   <div id="form">
-    //     <form id="waterform">
-    //       <div className="formgroup" id="name-form">
-    //         <label htmlFor="email">Title</label>
-    //         <input type="text" id="godina_izdanja" name="godina_izdanja" />
-    //       </div>
-
-    //       <div className="formgroup" id="email-form">
-    //         <label htmlFor="opis">Description</label>
-    //         <input type="text" id="opis" name="opis" />
-    //       </div>
-    //       <div className="formgroup" id="email-form">
-    //         <label htmlFor="opis">Rating</label>
-    //         <input type="text" id="opis" name="opis" />
-    //       </div>
-    //       <div className="formgroup" id="email-form">
-    //         <label htmlFor="opis">Picture</label>
-    //         <input type="text" id="opis" name="opis" />
-    //       </div>
-
-    //       <input type="submit" value="IZMENI" />
-    //     </form>
-    //   </div>
-    //   <Outlet />
-    // </>
   );
 }
 
