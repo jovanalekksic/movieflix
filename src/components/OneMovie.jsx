@@ -27,13 +27,13 @@ const OneMovie = ({ movie }) => {
       </Link>
 
       <div className="card-body-movie">
-        <lord-icon
+        {/* <lord-icon
           src="https://cdn.lordicon.com/xryjrepg.json"
           trigger="hover"
           colors="primary:#e50914 "
           style={{ width: "35px", height: "35px" }}
           id="heartIcon"
-        ></lord-icon>
+        ></lord-icon> */}
         <p className="card-title">{movie.title}</p>
       </div>
     </div>

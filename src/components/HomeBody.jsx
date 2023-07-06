@@ -3,6 +3,7 @@ import tv from "../images/tv.png";
 import phone from "../images/phone.png";
 import devices from "../images/devices.png";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 const HomeBody = () => {
   return (
