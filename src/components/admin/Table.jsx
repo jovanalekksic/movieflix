@@ -11,6 +11,7 @@ import "datatables.net-buttons/js/buttons.flash.js";
 import "datatables.net-buttons/js/buttons.html5.js";
 import "datatables.net-buttons/js/buttons.print.js";
 import { Link } from "react-router-dom";
+import "./tableStyle.css";
 
 class Table extends Component {
   state = {
@@ -55,6 +56,7 @@ class Table extends Component {
               pagingType: "full_numbers",
               retrieve: true,
               backgroundColor: "white",
+              color: "white",
               pageLength: 10,
               processing: true,
               dom: "Bfrtip",
@@ -120,7 +122,7 @@ class Table extends Component {
   showTable = () => {
     try {
       return this.state.movies.map((item, index) => (
-        <tr key={index}>
+        <tr key={index} style={{ color: "white" }} className="movieContent">
           <td className="text-xs font-weight-bold">{index + 1}</td>
           <td className="text-xs font-weight-bold">{item.title}</td>
           <td
@@ -136,6 +138,7 @@ class Table extends Component {
                 src={item.picture}
                 alt="img"
                 style={{ width: 18 + "rem", height: 11 + "rem" }}
+                id="moviePicture"
               />
             </div>
           </td>
@@ -161,7 +164,7 @@ class Table extends Component {
 
   render() {
     return (
-      <div style={style}>
+      <div className="movieTable">
         <div className="container-fluid py-4">
           <div className="table-responsive p-0 pb-2">
             <table

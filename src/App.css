@@ -175,13 +175,20 @@ max-width:100%;
   background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-attachment: fixed; 
-  height: 830px;
+  height: 1000px;
 
 }
 #forms{
   border-radius: 1rem;
   opacity: 0.8;
   background-color: black;
+}
+#formsUpdate{
+  border-radius: 1rem;
+  opacity: 0.8;
+  background-color: black;
+  height: 900px;
+
 }
 .cardMovie{
   box-shadow: 0px 0px 15px -5px;
