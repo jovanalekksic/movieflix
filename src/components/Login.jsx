@@ -52,7 +52,7 @@ const Login = ({ addToken, setRole, setMovies }) => {
                     <div className="mb-md-5 mt-md-4 pb-5">
                       <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                       <p className="text-white-50 mb-5">
-                        Please enter your login and password!
+                        Please enter your email and password!
                       </p>
 
                       <div className="form-outline form-white mb-4">
@@ -111,7 +111,7 @@ const Login = ({ addToken, setRole, setMovies }) => {
                     <div>
                       <p className="mb-0">
                         Don't have an account?{" "}
-                        <a href="#!" className="text-white-50 fw-bold">
+                        <a href="/register" className="text-white-50 fw-bold">
                           Sign Up
                         </a>
                       </p>
