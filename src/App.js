@@ -20,6 +20,7 @@ import About from './components/About';
 import UserPrivateRoute from './components/PrivateRoutes/UserPrivateRoute';
 import AdminPrivateRoute from './components/PrivateRoutes/AdminPrivateRoute';
 import UpdateTable from './components/admin/UpdateTable';
+import Forbidden from './components/Forbidden';
 
 
 function App() {
@@ -53,21 +54,22 @@ function App() {
           <Route path='/about' element={<About/>} />
           <Route path='/pricing' element={<Pricing/>} />
           <Route path='/converter' element={<Converter/>} />
+          <Route path='/forbidden' element={<Forbidden/>} />
 
           {/* samo ulogovani korisnici */}
-          {/* <Route element={<UserPrivateRoute/>}>
-          </Route> */}
+          <Route element={<UserPrivateRoute/>}>
             <Route path='/movies' element={<Movies movies={movies} setMovies={setMovies} />} />
             <Route path='/detail/:id' element={<MovieDetails movies={movies} />} />
             <Route path='/tvshows' element={<TVShows/>} />
             <Route path='/favorites' element={<Favorites token={token}/>} />
           
+          </Route>
           {/* samo admin */}
-          {/* <Route element={<AdminPrivateRoute/>} > 
-          </Route> */}
+          <Route element={<AdminPrivateRoute/>} > 
 
             <Route path='/table' element={<Table  />} />
             <Route path='/update/:id' element={<UpdateTable/>} />
+          </Route>
 
         </Route>
 

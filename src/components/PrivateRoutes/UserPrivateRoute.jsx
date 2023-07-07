@@ -4,7 +4,7 @@ import axios from "axios";
 
 const UserPrivateRoute = () => {
   let navigate = useNavigate();
-  const [authenticated, setAuthenticated] = useState();
+  const [authenticated, setAuthenticated] = useState(true);
   //const [loading, setLoading] = useState(true);
   console.log("User private route");
 
@@ -25,21 +25,16 @@ const UserPrivateRoute = () => {
         if (response.status === 200) {
           setAuthenticated(true);
           console.log("jeste autentikovan");
-          return <Navigate to="/movies" />;
         }
       })
       .catch((error) => {
         console.log(error);
         setAuthenticated(false);
       });
-  }, []);
+  }, [authenticated]);
 
-  // console.log(authenticated);
-  // return (
-  //   <div>
-  //     <Navigate to="/home" />
-  //   </div>
-  // );
+  console.log(authenticated);
+  return authenticated ? <Outlet /> : <Navigate to="/forbidden" />;
 };
 
 export default UserPrivateRoute;

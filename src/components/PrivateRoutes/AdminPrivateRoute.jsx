@@ -4,7 +4,7 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 const AdminPrivateRoute = () => {
   let navigate = useNavigate();
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
   //const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,17 +21,18 @@ const AdminPrivateRoute = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
-        if (response.status === 200) {
+        if (response.status == 200) {
           setAuthenticated(true);
+          console.log(authenticated);
         }
       })
       .catch((error) => {
         console.log(error);
         setAuthenticated(false);
       });
-  }, []);
-
-  return authenticated ? <Outlet /> : <Navigate to="/home" />;
+  }, [authenticated]);
+  console.log(authenticated);
+  return authenticated ? <Outlet /> : <Navigate to="/forbidden" />;
 };
 
 export default AdminPrivateRoute;
