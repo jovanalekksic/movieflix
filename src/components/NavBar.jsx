@@ -1,5 +1,5 @@
 import React from "react";
-import movieflix2 from "../images/movieflix2.png";
+import movieflix2 from "../images/logo4.png";
 import { Routes, Link, useNavigate, Navigate } from "react-router-dom";
 import Register from "./Register";
 import axios from "axios";
@@ -32,7 +32,7 @@ const NavBar = ({ token, role }) => {
   return (
     <div>
       <div className="container" id="navbar">
-        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
+        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4  ">
           <Link
             to="/home"
             className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"

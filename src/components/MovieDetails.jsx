@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, useParams } from "react-router-dom";
 import playButton from "../images/baseline_play_circle_outline_white_36dp.png";
+import tomato from "../images/rotten.png";
 
 const MovieDetails = ({ movies }) => {
   const { id } = useParams();
@@ -26,6 +27,11 @@ const MovieDetails = ({ movies }) => {
           <h3 className="posterGenre">{m.genre.name}</h3>
           <p className="posterDesc">{m.description}</p>
           <p className="posterProduction">{m.studio.name}</p>
+          <p>Rating: </p>
+          <div className="tomato">
+            <img src={tomato} style={{ height: 20 + "px", width: 20 + "px" }} />
+            <p className="posterRating"> {m.rating}</p>
+          </div>
         </div>
       </div>
       <Outlet />
