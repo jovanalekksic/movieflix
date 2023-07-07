@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import movieflix2 from "../images/logo4.png";
 import { Routes, Link, useNavigate, Navigate } from "react-router-dom";
 import Register from "./Register";
@@ -24,11 +24,13 @@ const NavBar = ({ token, role }) => {
         console.log(JSON.stringify(response.data));
         window.sessionStorage.setItem("auth_token", null);
         navigate("/home");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
       });
   }
+
   return (
     <div>
       <div className="container" id="navbar">
