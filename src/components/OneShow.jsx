@@ -5,7 +5,7 @@ const OneShow = ({ show }) => {
     <div
       className="cardMovie"
       id="oneMovie"
-      style={{ width: 11 + "rem", height: 17 + "rem" }}
+      style={{ width: 15 + "rem", height: 21 + "rem" }}
     >
       <img src={show.i.imageUrl} className="card-img-top" id="showPicture" />
 
