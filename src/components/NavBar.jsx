@@ -69,7 +69,7 @@ const NavBar = ({ token, role }) => {
             ) : (
               <></>
             )}
-            {token != null ? (
+            {/* {token != null ? (
               <li>
                 <Link to="/favorites" className="nav-link  px-2 ">
                   Your movies
@@ -77,7 +77,7 @@ const NavBar = ({ token, role }) => {
               </li>
             ) : (
               <></>
-            )}
+            )} */}
             {token != null && role == "admin" ? (
               <li>
                 <Link to="/table" className="nav-link  px-2 ">

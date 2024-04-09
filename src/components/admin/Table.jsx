@@ -35,13 +35,13 @@ class Table extends Component {
       axios
         .request(config)
         .then((response) => {
-          console.log(response.data.movies);
           //setMovies(response.data.movies);
           //console.log(res);
           this.setState({
             movies: response.data.movies,
             loading: false,
           });
+          console.log(response.data.movies);
         })
         .catch((error) => {
           console.log(error);
@@ -123,7 +123,8 @@ class Table extends Component {
     try {
       return this.state.movies.map((item, index) => (
         <tr key={index} style={{ color: "white" }} className="movieContent">
-          <td className="text-xs font-weight-bold">{index + 1}</td>
+          <td className="text-xs font-weight-bold">{item.id}</td>
+
           <td className="text-xs font-weight-bold">{item.title}</td>
           <td
             className="text-xs font-weight-bold"
@@ -142,7 +143,9 @@ class Table extends Component {
               />
             </div>
           </td>
-          <td className="text-xs font-weight-bold">{item.user.id}</td>
+          <td className="text-xs font-weight-bold">
+            {item.user ? item.user.id : "N/A"}
+          </td>
           <td>
             <button
               className="btn btn-danger"

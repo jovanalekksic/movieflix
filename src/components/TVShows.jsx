@@ -40,17 +40,6 @@ const TVShows = () => {
             <OneShow show={item} key={index} />
           ))}
         </div>
-        {/* {show.map(({ l, s, y, i: { height, imageUrl } }, index) => {
-        return (
-          <div key={index}>
-            <h2>{l}</h2>
-            <h3>{s}</h3>
-            <h3>{y}</h3>
-            <h3>{height}</h3>
-            <h3>{imageUrl}</h3>
-          </div>
-        );
-      })} */}
       </div>
       <Outlet />
     </div>

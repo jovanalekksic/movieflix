@@ -25,10 +25,6 @@ const Movies = ({ movies, setMovies }) => {
       });
   }, []);
   return (
-    //  <div>
-    //   <h3>These are all movies from the database.</h3>
-    //   {movies==null ? (<></>):(movies.map((movie)=><OneMovie movie={movie} key={movie.id} />))}
-    // </div>
     <div>
       <div className="movies-wrap">
         <h2 id="moviesTrending">Trending now</h2>
