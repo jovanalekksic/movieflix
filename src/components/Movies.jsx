@@ -4,6 +4,8 @@ import OneMovie from "./OneMovie";
 import { Outlet } from "react-router-dom";
 
 const Movies = ({ movies, setMovies }) => {
+  const [selectedGenre, setSelectedGenre] = useState(null);
+
   useEffect(() => {
     let config = {
       method: "get",
@@ -24,15 +26,79 @@ const Movies = ({ movies, setMovies }) => {
         console.log(error);
       });
   }, []);
+
+  const handleGengreClick = (genre) => {
+    setSelectedGenre(genre === selectedGenre ? null : genre);
+  };
   return (
     <div>
       <div className="movies-wrap">
-        <h2 id="moviesTrending">Trending now</h2>
+        <div className="genre-search">
+          <h2 id="moviesTrending">Trending now</h2>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick(null)}
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Crime")}
+          >
+            Crime
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Drama")}
+          >
+            Drama
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Mystery")}
+          >
+            Mystery
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Romance")}
+          >
+            Romance
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Comedy")}
+          >
+            Comedy
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onClick={() => handleGengreClick("Thriller")}
+          >
+            Thriller
+          </button>
+        </div>
         <div className="allMovies">
-          {movies == null ? (
+          {/* {movies == null ? (
             <></>
           ) : (
             movies.map((movie) => <OneMovie movie={movie} key={movie.id} />)
+          )} */}
+          {movies == null ? (
+            <></>
+          ) : (
+            movies
+              .filter((movie) =>
+                selectedGenre ? movie.genre.name === selectedGenre : true
+              )
+              .map((movie) => <OneMovie movie={movie} key={movie.id} />)
           )}
         </div>
       </div>

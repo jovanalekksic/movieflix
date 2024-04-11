@@ -4,6 +4,7 @@ import { Routes, Link, useNavigate, Navigate } from "react-router-dom";
 import Register from "./Register";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
+import HomeBody from "./HomeBody";
 
 const NavBar = ({ token, role }) => {
   let navigate = useNavigate();
@@ -42,19 +43,19 @@ const NavBar = ({ token, role }) => {
             <img src={movieflix2} id="logo" />
           </Link>
           <ul
-            className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0  "
+            className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 custom-list-item"
             id="tabs"
           >
             <li>
               <Link to="/home" className="nav-link  px-2 ">
-                Home
+                HOME
               </Link>
             </li>
 
             {token != null ? (
               <li>
                 <Link to="/TVShows" className="nav-link  px-2 ">
-                  TV Shows
+                  TV SHOWS
                 </Link>
               </li>
             ) : (
@@ -136,6 +137,7 @@ const NavBar = ({ token, role }) => {
           </div>
         </header>
       </div>
+
       <Outlet />
     </div>
   );

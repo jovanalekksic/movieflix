@@ -7,60 +7,61 @@ import "../Currency.css";
 import { Outlet } from "react-router-dom";
 
 const Pricing = () => {
-  const [currencyOptions, setCurrencyOptions] = useState([]);
-  //   console.log(currencyOptions);
-  const [fromCurrency, setFromCurrency] = useState();
-  const [toCurrency, setToCurrency] = useState();
-  const [exchangeRate, setExchangeRate] = useState();
-  const [amount, setAmount] = useState(1);
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
+  // const [currencyOptions, setCurrencyOptions] = useState([]);
+  // //   console.log(currencyOptions);
+  // const [fromCurrency, setFromCurrency] = useState();
+  // const [toCurrency, setToCurrency] = useState();
+  // const [exchangeRate, setExchangeRate] = useState();
+  // const [amount, setAmount] = useState(1);
+  // const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-  let toAmount, fromAmount;
-  if (amountInFromCurrency) {
-    fromAmount = amount;
-    toAmount = amount * exchangeRate;
-  } else {
-    toAmount = amount;
-    fromAmount = amount / exchangeRate;
-  }
+  // let toAmount, fromAmount;
+  // if (amountInFromCurrency) {
+  //   fromAmount = amount;
+  //   toAmount = amount * exchangeRate;
+  // } else {
+  //   toAmount = amount;
+  //   fromAmount = amount / exchangeRate;
+  // }
 
-  // console.log(exchangeRate);
+  // // console.log(exchangeRate);
 
-  var requestURL = "https://api.exchangerate.host/latest";
-  var request = new XMLHttpRequest();
-  request.open("GET", requestURL);
-  request.responseType = "json";
-  request.send();
+  // var requestURL = "https://api.exchangerate.host/latest";
 
-  useEffect(() => {
-    request.onload = function () {
-      var response = request.response;
-      //   console.log(response);
-      const firstCurrency = Object.keys(response.rates)[0];
-      // console.log(firstCurrency);
-      setCurrencyOptions([response.base, ...Object.keys(response.rates)]);
-      setFromCurrency(response.base);
-      setToCurrency(firstCurrency);
-      setExchangeRate(response.rates[firstCurrency]);
-    };
-  }, []);
+  // var request = new XMLHttpRequest();
+  // request.open("GET", requestURL);
+  // request.responseType = "json";
+  // request.send();
 
-  useEffect(() => {
-    if (fromCurrency != null && toCurrency != null) {
-      fetch(`${requestURL}?base=${fromCurrency}&symbols=${toCurrency}`)
-        .then((res) => res.json())
-        .then((data) => setExchangeRate(data.rates[toCurrency]));
-    }
-  }, [fromCurrency, toCurrency]);
+  // useEffect(() => {
+  //   request.onload = function () {
+  //     var response = request.response;
+  //     console.log(response);
+  //     const firstCurrency = Object.keys(response.rates)[0];
+  //     // console.log(firstCurrency);
+  //     setCurrencyOptions([response.base, ...Object.keys(response.rates)]);
+  //     setFromCurrency(response.base);
+  //     setToCurrency(firstCurrency);
+  //     setExchangeRate(response.rates[firstCurrency]);
+  //   };
+  // }, []);
 
-  function handleFromAmountChange(e) {
-    setAmount(e.target.value);
-    setAmountInFromCurrency(true);
-  }
-  function handleToAmountChange(e) {
-    setAmount(e.target.value);
-    setAmountInFromCurrency(false);
-  }
+  // useEffect(() => {
+  //   if (fromCurrency != null && toCurrency != null) {
+  //     fetch(`${requestURL}?base=${fromCurrency}&symbols=${toCurrency}`)
+  //       .then((res) => res.json())
+  //       .then((data) => setExchangeRate(data.rates[toCurrency]));
+  //   }
+  // }, [fromCurrency, toCurrency]);
+
+  // function handleFromAmountChange(e) {
+  //   setAmount(e.target.value);
+  //   setAmountInFromCurrency(true);
+  // }
+  // function handleToAmountChange(e) {
+  //   setAmount(e.target.value);
+  //   setAmountInFromCurrency(false);
+  // }
 
   return (
     <div>
@@ -273,7 +274,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="main">
+        {/* <div className="main">
           <h1>Convert</h1>
           <Currency
             currencyOptions={currencyOptions}
@@ -290,7 +291,7 @@ const Pricing = () => {
             onChangeAmount={handleToAmountChange}
             amount={toAmount}
           />
-        </div>
+        </div> */}
       </div>
       <Outlet />
     </div>

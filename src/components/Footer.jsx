@@ -99,7 +99,7 @@ const Footer = () => {
         </section>
 
         <div className="text-center p-3" id="#sedmaLinija">
-          © 2023 Copyright:
+          © 2024 Copyright:
           <a className="text-white" href="/">
             Movieflix.com
           </a>
